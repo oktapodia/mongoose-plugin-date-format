@@ -2,10 +2,16 @@
 import dateformatplugin from '../src';
 import mongoose, { Schema } from 'mongoose';
 import moment from 'moment';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
 describe('mongoose-plugin-date-format', () => {
-  beforeAll(() => {
-    return mongoose.connect('mongodb://localhost:27017/dateformat', {
+  let mongod;
+
+  beforeAll(async () => {
+    mongod = new MongoMemoryServer();
+    const uri = await mongod.getConnectionString();
+
+    return mongoose.connect(uri, {
       useNewUrlParser: true,
     });
   });
@@ -27,7 +33,8 @@ describe('mongoose-plugin-date-format', () => {
     expect(person.toJSON().birthdate).toEqual(birthdate.format(dateFormat));
   });
 
-  afterAll(() => {
-    return mongoose.disconnect();
+  afterAll(async () => {
+    mongoose.disconnect();
+    await mongod.stop();
   });
 });
