@@ -33,6 +33,35 @@ describe('mongoose-plugin-date-format', () => {
     expect(person.toJSON().birthdate).toEqual(birthdate.format(dateFormat));
   });
 
+  test('convert the date to a specific format with nested object', async () => {
+    const personSchema = new Schema({
+      name: String,
+      birthdate: Date,
+      nested: {
+        name: String,
+        birthdate: Date,
+      }
+    });
+    const dateFormat = 'YYYY';
+    const birthdate = moment();
+    personSchema.plugin(dateformatplugin(dateFormat));
+    const personModel = mongoose.model('people', personSchema, 'people');
+
+    const john = {
+      birthdate,
+      name: 'John Doe',
+      nested: {
+        name: 'Nested test',
+        birthdate,
+      }
+    };
+
+    const person = await personModel.create(john);
+    expect(person.get('birthdate')).toBeInstanceOf(Date);
+    expect(person.toJSON().birthdate).toEqual(birthdate.format(dateFormat));
+    expect(person.toJSON().nested.birthdate).toEqual(birthdate.format(dateFormat));
+  });
+
   afterAll(async () => {
     mongoose.disconnect();
     await mongod.stop();
