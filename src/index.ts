@@ -1,9 +1,10 @@
 import moment from 'moment';
 import { Schema } from 'mongoose';
 
-function findPaths(schema: any): Object[] {
-  return Object.keys(schema.paths).filter((path) => {
-    return schema.paths[path].instance === 'Date';
+function modifyDates(format: string, obj: any): void {
+  Object.keys(obj).forEach((k: string): void => {
+    if(obj[k] instanceof Date) obj[k] = moment(obj[k]).format(format);
+    if(typeof obj[k] === 'object') modifyDates(format, obj[k]);
   });
 }
 
@@ -13,16 +14,10 @@ function toJSON(format: string, schema: Schema<any>): any {
   if (toJSON && toJSON.transform) {
     transform = toJSON.transform;
   }
-
   // Extend toJSON options
   schema.set('toJSON', Object.assign(toJSON || {}, {
     transform(doc, ret) {
-      const paths = findPaths(schema);
-
-      paths.forEach((path: string): void => {
-        const date = ret[path];
-        ret[path] = moment(date).format(format);
-      });
+      modifyDates(format, ret);
 
       if (transform) {
         return transform(doc, ret);
