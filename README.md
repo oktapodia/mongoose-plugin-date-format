@@ -2,9 +2,6 @@
 
 Change the date field default output in your mongoose schemas
 
-[![Build Status](https://travis-ci.org/oktapodia/mongoose-plugin-date-format.svg?branch=master)](https://travis-ci.org/oktapodia/mongoose-plugin-date-format)
-[![Coverage Status](https://coveralls.io/repos/oktapodia/mongoose-plugin-date-format/badge.svg?branch=master)](https://coveralls.io/r/oktapodia/mongoose-plugin-date-format?branch=master)
-
 **Note:** This plugin will *only* work with mongoose >= 4.0. Do NOT use
 this plugin with mongoose 3.x. You have been warned.
 
