@@ -1,10 +1,13 @@
-## 1.1.0 - 2019-11-06
+## 1.1.1 - 2019-11-06
 
  - Add nested array|object support ([76a9a9f7e7f540d9659b1b66eeb60afa45baacd8](https://github.com/oktapodia/mongoose-plugin-date-format/commit/76a9a9f7e7f540d9659b1b66eeb60afa45baacd8))
  - Add new built version ([f8b4213d3900885061c9842d6abce48c3a54d39c](https://github.com/oktapodia/mongoose-plugin-date-format/commit/f8b4213d3900885061c9842d6abce48c3a54d39c))
- - Bump mongodb-memory-server from 5.2.0 to 6.0.1 ([ba6f8df40d6a9a1d3cfbc52bc8a6d6dadf531706](https://github.com/oktapodia/mongoose-plugin-date-format/commit/ba6f8df40d6a9a1d3cfbc52bc8a6d6dadf531706))
+ - Bump @types/jest from 24.0.18 to 24.0.22 ([2874b4e8264d8ff266e31b93140ab4cb0f72eb14](https://github.com/oktapodia/mongoose-plugin-date-format/commit/2874b4e8264d8ff266e31b93140ab4cb0f72eb14))
+ - Bump mongoose from 5.6.11 to 5.7.5 ([364673db9b786769f13aea443be941752f0ef564](https://github.com/oktapodia/mongoose-plugin-date-format/commit/364673db9b786769f13aea443be941752f0ef564))
+ - Bump version + add changelog ([bd95d804ab55018556a93d6296a9d4e275153752](https://github.com/oktapodia/mongoose-plugin-date-format/commit/bd95d804ab55018556a93d6296a9d4e275153752))
  - Rename test folder ([1fde84942a73a91f829084420038f3689f853c77](https://github.com/oktapodia/mongoose-plugin-date-format/commit/1fde84942a73a91f829084420038f3689f853c77))
  - Update package version ([1b59b35c4e253abc1492abe95c4ae95bb19c14a9](https://github.com/oktapodia/mongoose-plugin-date-format/commit/1b59b35c4e253abc1492abe95c4ae95bb19c14a9))
+ - Update workflow.yml ([3c3bfb227ba12b5c3d19e30e96a19a564197519f](https://github.com/oktapodia/mongoose-plugin-date-format/commit/3c3bfb227ba12b5c3d19e30e96a19a564197519f))
 
 
 
