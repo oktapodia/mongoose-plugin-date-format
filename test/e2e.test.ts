@@ -1,15 +1,23 @@
 // tslint:disable-next-line:import-name
 import dateformatplugin from '../src';
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 import moment from 'moment';
 import { MongoMemoryServer } from 'mongodb-memory-server';
+
+interface IPerson extends Document {
+  name: string;
+  birthdate: Date;
+  nestedObject?: IPerson;
+  nestedArray?: IPerson[];
+}
 
 describe('mongoose-plugin-date-format', () => {
   let mongod;
 
   beforeAll(async () => {
     mongod = new MongoMemoryServer();
-    const uri = await mongod.getConnectionString();
+
+    const uri = await mongod.getUri();
 
     return mongoose.connect(uri, {
       useNewUrlParser: true,
@@ -21,7 +29,7 @@ describe('mongoose-plugin-date-format', () => {
     const dateFormat = 'YYYY';
     const birthdate = moment();
     personSchema.plugin(dateformatplugin(dateFormat));
-    const personModel = mongoose.model('people', personSchema, 'people');
+    const personModel = mongoose.model<IPerson>('people', personSchema);
 
     const john = {
       birthdate,
@@ -45,14 +53,14 @@ describe('mongoose-plugin-date-format', () => {
     const dateFormat = 'YYYY';
     const birthdate = moment();
     personSchema.plugin(dateformatplugin(dateFormat));
-    const personModel = mongoose.model('peopleNested', personSchema, 'peopleNested');
+    const personModel = mongoose.model<IPerson>('peopleNested', personSchema);
 
     const john = {
       birthdate,
       name: 'John Doe',
       nestedObject: {
-        name: 'Nested test',
         birthdate,
+        name: 'Nested test',
       },
     };
 
@@ -74,19 +82,19 @@ describe('mongoose-plugin-date-format', () => {
     const dateFormat = 'YYYY';
     const birthdate = moment();
     personSchema.plugin(dateformatplugin(dateFormat));
-    const personModel = mongoose.model('peopleNestedArrayOfObjects', personSchema, 'peopleNestedArrayOfObjects');
+    const personModel = mongoose.model<IPerson>('peopleNestedArrayOfObjects', personSchema);
 
     const john = {
       birthdate,
       name: 'John Doe',
       nestedArray: [
         {
-          name: 'Nested test',
           birthdate,
+          name: 'Nested test',
         },
         {
-          name: 'Nested test2',
           birthdate,
+          name: 'Nested test2',
         },
       ],
     };
@@ -99,7 +107,7 @@ describe('mongoose-plugin-date-format', () => {
   });
 
   afterAll(async () => {
-    mongoose.disconnect();
+    await mongoose.disconnect();
     await mongod.stop();
   });
 });
