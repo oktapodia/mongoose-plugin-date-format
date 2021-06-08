@@ -10,6 +10,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
 
     "removeComments": true,
     "declaration": true,

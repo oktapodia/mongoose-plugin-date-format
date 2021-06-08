@@ -3,8 +3,8 @@ import { Schema } from 'mongoose';
 
 function modifyDates(format: string, obj: any): void {
   Object.keys(obj).forEach((k: string): void => {
-    if(obj[k] instanceof Date) obj[k] = moment(obj[k]).format(format);
-    if(typeof obj[k] === 'object') modifyDates(format, obj[k]);
+    if (obj[k] instanceof Date) obj[k] = moment(obj[k]).format(format);
+    if (typeof obj[k] === 'object') modifyDates(format, obj[k]);
   });
 }
 
