@@ -1,5 +1,8 @@
 # mongoose-plugin-date-format
 
+[![CI](https://github.com/oktapodia/mongoose-plugin-date-format/actions/workflows/workflow.yml/badge.svg)](https://github.com/oktapodia/mongoose-plugin-date-format/actions/workflows/workflow.yml)
+[![npm version](https://badge.fury.io/js/mongoose-plugin-date-format.svg)](https://badge.fury.io/js/mongoose-plugin-date-format)
+
 Change the date field default output in your mongoose schemas
 
 **Note:** This plugin will *only* work with mongoose >= 4.0. Do NOT use
