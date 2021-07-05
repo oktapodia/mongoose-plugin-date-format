@@ -35,7 +35,7 @@
     "@types/jest": "^26.0.23",
     "@types/mongoose": "^5.11.96",
     "jest": "^27.0.4",
-    "mongodb-memory-server": "^6.9.6",
+    "mongodb-memory-server": "^7.1.0",
     "mongoose": "^5.6.7",
     "ts-jest": "^27.0.3",
     "tslint": "^5.20.1",
