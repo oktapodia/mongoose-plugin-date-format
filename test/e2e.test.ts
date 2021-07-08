@@ -15,7 +15,7 @@ describe('mongoose-plugin-date-format', () => {
   let mongod;
 
   beforeAll(async () => {
-    mongod = new MongoMemoryServer();
+    mongod = await MongoMemoryServer.create();
 
     const uri = await mongod.getUri();
 
