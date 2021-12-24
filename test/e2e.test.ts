@@ -19,9 +19,7 @@ describe('mongoose-plugin-date-format', () => {
 
     const uri = await mongod.getUri();
 
-    return mongoose.connect(uri, {
-      useNewUrlParser: true,
-    });
+    return mongoose.connect(uri);
   });
 
   test('convert the date to a specific format', async () => {
